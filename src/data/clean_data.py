@@ -1,11 +1,21 @@
+import re
+
 from load_data import load_data
 
 
 choc_df = load_data("data/raw/chocolate.csv")
 
 
-def rename_columns(df, column_mapping):
-    df.rename(columns=column_mapping, inplace=True)
+def normalize_columns(df, column_mapping):
+    df.rename(columns=column_mapping, inplace=True)  # rename all columns
+    df = df.astype(
+        {col: "string" for col in df.select_dtypes(include="object").columns}
+    )  # convert object type to str
+
+    df["Cocoa Percent"] = (
+        df["Cocoa Percent"].apply(lambda x: re.sub(r"%$", "", x)).astype(float)
+    )  # remove % from Cocoa columns
+
     return df
 
 
@@ -19,6 +29,7 @@ modified_columns = {
 }
 
 
-res = rename_columns(choc_df, modified_columns)
+processed_df = normalize_columns(choc_df, modified_columns)
+processed_df.to_csv("data/processed/cleaned_chocolate_data.csv", index=False)
 
-print(res)
+processed_df.info()
