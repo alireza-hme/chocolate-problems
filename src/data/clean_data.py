@@ -14,7 +14,7 @@ def normalize_columns(df, column_mapping):
 
     df["Cocoa Percent"] = (
         df["Cocoa Percent"].apply(lambda x: re.sub(r"%$", "", x)).astype(float)
-    )  # remove % from Cocoa columns
+    )  # remove '%' from Cocoa columns
 
     return df
 
@@ -30,6 +30,6 @@ modified_columns = {
 
 
 processed_df = normalize_columns(choc_df, modified_columns)
-processed_df.to_csv("data/processed/chocolate_preprocessed.csv", index=False)
+processed_df.to_csv("data/processed/chocolate_cleaned.csv", index=False)
 
 processed_df.info()
