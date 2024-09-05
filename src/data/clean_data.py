@@ -30,6 +30,6 @@ modified_columns = {
 
 
 processed_df = normalize_columns(choc_df, modified_columns)
-processed_df.to_csv("data/processed/cleaned_chocolate_data.csv", index=False)
+processed_df.to_csv("data/processed/chocolate_preprocessed.csv", index=False)
 
 processed_df.info()

@@ -19,7 +19,7 @@ venv/
 ENV/
 
 # Data files
-*.csv
+# *.csv
 *.xlsx
 *.json
 *.hdf5
@@ -38,7 +38,7 @@ ENV/
 *.pt
 
 # Notebooks with output
-*.ipynb
+# *.ipynb
 
 # System files
 Thumbs.db
