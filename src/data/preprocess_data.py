@@ -24,4 +24,4 @@ calc_price_col()
 
 
 # Save the processed data
-choc_df.to_csv("data/processed/chocolate_preprocessed.csv", index=False)
+choc_df.to_csv("data/processed/chocolate_price.csv", index=False)
